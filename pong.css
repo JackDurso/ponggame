@@ -1,0 +1,21 @@
+body {
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 60px;
+}
+
+#scoreboard {
+    font-size: 40px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#reset {
+    cursor: pointer;
+    border-radius: 15px;
+    width: 100px;
+    height: 50px;
+    font-family: 'Courier New', Courier, monospace;
+}
