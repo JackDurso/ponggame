@@ -23,8 +23,7 @@ class Paddle {
     move(isCPU, ball) {
         if (isCPU) {
             const speed = 4;
-            const centerY = this.y + this.l
-            
+            const centerY = this.y + (this.l/2)            
             if (centerY < ball.y - ball.r) {
                 this.vy = speed;
             } else if (centerY > ball.y + ball.r) {
