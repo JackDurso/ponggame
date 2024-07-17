@@ -61,7 +61,8 @@ class Ball {
         if(this.y > paddle.y + paddle.l) return SIDE.NONE;
         if(this.vx < 0) {
             this.vx = paddleForce * Math.abs(this.vx);
-            //add other spin, etc...
+            let paddlePos = (this.y - paddle.y - paddle.l/2) / paddle.l * 2
+            this.vy += paddlePos * 1.5
         }
         return SIDE.NONE;
     }
@@ -73,7 +74,8 @@ class Ball {
         if(this.y > paddle.y + paddle.l) return SIDE.NONE;
         if(this.vx > 0) {
             this.vx = -paddleForce * Math.abs(this.vx);
-            //add other spin, etc...
+            let paddlePos = (this.y - paddle.y - paddle.l/2) / paddle.l * 2
+            this.vy += paddlePos * 1.5
             //add sound?
             if (this.boing < 21) this.boing++
             else resetBall()
