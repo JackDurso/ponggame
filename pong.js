@@ -69,7 +69,7 @@ function nextTick() {
 
 function play() {
     paddleL.move(false, ball)
-    paddleR.move(true, ball)
+    paddleR.move(cpuCheck.checked, ball)
     let scoreSide = ball.bounce([paddleL, paddleR])
     if (scoreSide != SIDE.NONE) {
         if (scoreSide == SIDE.LEFT) scoreL++
