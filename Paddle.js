@@ -22,6 +22,16 @@ class Paddle {
 
     move(isCPU, ball) {
         if (isCPU) {
+            const speed = 4;
+            const centerY = this.y + this.l
+            
+            if (centerY < ball.y - ball.r) {
+                this.vy = speed;
+            } else if (centerY > ball.y + ball.r) {
+                this.vy = -speed;
+            } else {
+                this.vy = 0;
+            }
             //ball.y <- where the balll is
             //this.y <- where the paddle is
             //this.l <- how long the paddle is
