@@ -1,3 +1,5 @@
+let isSpacebarDown = false;
+
 window.addEventListener("keydown", keyDown);
 function keyDown(event) {
     const key = event.code;
@@ -15,6 +17,9 @@ function keyDown(event) {
             break;
         case "ArrowDown":
             paddleR.vy = paddleVelocity
+            break;
+        case "Space":
+            isSpacebarDown = true
             break;
         case "KeyR":
             resetGame()
@@ -35,6 +40,9 @@ function keyUp(event) {
         case "ArrowUp":
         case "ArrowDown":
             paddleR.vy = 0
+            break;
+        case "Space":
+            isSpacebarDown = false
             break;
     }
 }

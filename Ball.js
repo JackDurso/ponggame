@@ -1,3 +1,5 @@
+let bounceSound = document.getElementById('bounceSound');
+
 class Ball {
     constructor(x, y, vx, vy, r, c) {
         this.x = x;
@@ -56,31 +58,47 @@ class Ball {
     
     bounceLeftPaddle(paddle) {
         if(this.x - this.r > paddle.w) return SIDE.NONE;
-        if(this.x - this.r < 0) return SIDE.RIGHT; // Someone got a point....
+        if(this.x - this.r < 0) {
+            //let bounceSound = document.getElementById('bounceSound');
+            bounceSound.play();
+             
+            return SIDE.RIGHT;
+         } 
+         
+         // Someone got a point....
         if(this.y < paddle.y) return SIDE.NONE;
         if(this.y > paddle.y + paddle.l) return SIDE.NONE;
         if(this.vx < 0) {
             this.vx = paddleForce * Math.abs(this.vx);
             let paddlePos = (this.y - paddle.y - paddle.l/2) / paddle.l * 2
             this.vy += paddlePos * 1.5
+            bounceSound.play();
         }
         return SIDE.NONE;
     }
-    
     bounceRightPaddle(paddle) {
         if(this.x + this.r < paddle.x) return SIDE.NONE;
-        if(this.x + this.r > paddle.x + paddle.w) return SIDE.LEFT; // Someone got a point....
+        if(this.x + this.r > paddle.x + paddle.w) {
+            
+            bounceSound.play();
+
+            return SIDE.LEFT; 
+        }
+          // Someone got a point....
         if(this.y < paddle.y) return SIDE.NONE;
         if(this.y > paddle.y + paddle.l) return SIDE.NONE;
         if(this.vx > 0) {
             this.vx = -paddleForce * Math.abs(this.vx);
-            let paddlePos = (this.y - paddle.y - paddle.l/2) / paddle.l * 2
-            this.vy += paddlePos * 1.5
+            let paddlePos = (this.y - paddle.y - paddle.l/2) / paddle.l * 2;
+            this.vy += paddlePos * 1.5;
             //add sound?
+            bounceSound.play();
+            if (this.boing == 4) upgrade.removeUpgrade()
             if (this.boing < 21) this.boing++
             else resetBall()
+
             console.log(this.boing)
         }
         return SIDE.NONE;
-}
+    }
 }
