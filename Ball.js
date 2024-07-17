@@ -7,6 +7,7 @@ class Ball {
         this.r = r;
         this.c = c;
         this.inPlay = false;
+        this.boing = 0
     }
 
     draw(ctx) {
@@ -52,6 +53,7 @@ class Ball {
         }
     }
 
+    
     bounceLeftPaddle(paddle) {
         if(this.x - this.r > paddle.w) return SIDE.NONE;
         if(this.x - this.r < 0) return SIDE.RIGHT; // Someone got a point....
@@ -73,6 +75,9 @@ class Ball {
             this.vx = -paddleForce * Math.abs(this.vx);
             //add other spin, etc...
             //add sound?
+            if (this.boing < 21) this.boing++
+            else resetBall()
+            console.log(this.boing)
         }
         return SIDE.NONE;
 }
