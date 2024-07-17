@@ -31,12 +31,6 @@ class Paddle {
             } else {
                 this.vy = 0;
             }
-            //ball.y <- where the balll is
-            //this.y <- where the paddle is
-            //this.l <- how long the paddle is
-
-            // control this .vy using ball
-            // don't set this.y! (cheats)
         }
         this.y += this.vy
         if (this.y < 0) this.y = 0;

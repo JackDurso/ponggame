@@ -32,15 +32,15 @@ function draw() {
 }
 
 function resetGame() {
-    state = STATE.STARTUP
-    scoreL = 0
-    scoreR = 0
-    updateScore()
-    clearInterval(intervalID)
-    resetBall()
+    state = STATE.STARTUP;
+    scoreL = 0;
+    scoreR = 0;
+    updateScore();
+    clearInterval(intervalID);
+    resetBall();
     paddleL = new Paddle(0, 0, paddleLength, paddleWidth, SIDE.LEFT, "white")
     paddleR = new Paddle(boardWidth-paddleWidth, 0, paddleLength, paddleWidth, SIDE.RIGHT, "white")
-    nextTick()
+    nextTick();
 }
 
 function resetBall() {
@@ -68,17 +68,18 @@ function nextTick() {
 }
 
 function play() {
-    paddleL.move(false, ball)
-    paddleR.move(true, ball)
+    const isCPUEnabled =  cpucheck.checked; 
+    paddleL.move(false, ball);
+    paddleR.move(isCPUEnabled, ball);
     let scoreSide = ball.bounce([paddleL, paddleR])
     if (scoreSide != SIDE.NONE) {
         if (scoreSide == SIDE.LEFT) scoreL++
         if (scoreSide == SIDE.RIGHT) scoreR++
-        updateScore()
-        resetBall()
+        updateScore();
+        resetBall();
         if (scoreL >= 10 || scoreR >= 10) return STATE.GAMEOVER;
     }
-    ball.move()
+    ball.move();
     // Add serving the ball?
     // If a player wins, stop the game...
     return STATE.PLAYING;
