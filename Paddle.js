@@ -9,15 +9,25 @@ class Paddle {
         this.side = side;
         this.c = c;
         this.vy = 0;
+        this.hasUpgrade = false
     }
 
     draw(ctx){
         ctx.fillStyle = this.c;
-        ctx.strokeStyle = "black";
         ctx.lineWidth = 2;
+        ctx.shadowBlur = 20;
+        ctx.shadowColor = this.c;
 
-        ctx.fillRect(this.x, this.y, this.w, this.l); // NOT h
-        ctx.strokeRect(this.x, this.y, this.w, this.l);
+        ctx.beginPath();
+        ctx.moveTo(this.x, this.y);
+        ctx.arcTo(this.x + this.w, this.y, this.x + this.w, this.y + this.l, 10);
+        ctx.arcTo(this.x + this.w, this.y + this.l, this.x, this.y + this.l, 10);
+        ctx.arcTo(this.x, this.y + this.l, this.x, this.y, 10);
+        ctx.arcTo(this.x, this.y, this.x + this.w, this.y, 10);
+        ctx.closePath();
+        ctx.fill();
+
+        ctx.shadowBlur = 0;
     } 
 
     move(isCPU, ball) {

@@ -7,18 +7,21 @@ class Upgrade {
     applyUpgrade(paddle) {
         paddle.l *= 1.2; //20% paddle lenth inc
         paddle.w *= 1.2; //20% paddle width inc
-        paddle.c = "gold";
+        paddle.c = "#f4af2d";
+        paddle.hasUpgrade = true
     }
 
     removeUpgrade(paddle) {
-        // paddle.l /= 1.2; // Revert paddle length
+        paddle.l /= 1.2; // Revert paddle length
         paddle.w /= 1.2; // Revert paddle width
-        paddle.c = "white";
+        paddleL.c = "#7dfdfe";
+        paddleR.c = "#ff7d7d";
+        paddle.hasUpgrade = false
     }
 
     randomUpgrade(side) {
         const chance = Math.random();
-        if (chance < 0.25) { // 25% chance to get an upgrade
+        if (chance < 0.33) { // 33% chance to get an upgrade
             this.gainUpgrade(side);
         }
     }

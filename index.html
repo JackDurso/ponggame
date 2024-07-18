@@ -12,15 +12,18 @@
     <h3>By Chase and Jack</h3>
     <canvas id="gameboard" width="500" height="500"></canvas>
     <div id="scoreboard">0 : 0</div>
+    <label>Win at 10 points, Upgrades reset after 9 bounces, ball resets after 42</label>
     <button id="reset" onclick="resetGame()">RESET</button>
     <br />
     <br>
     <input type="checkbox" id="cpucheck">
     <label>CPU Play</label>
     <audio id="bounceSound"> 
-        <source src="" type="audio/mpeg"> 
+        <source src="071658_pongwav-93028.mp3" type="audio/mpeg"> 
     </audio>
     
+    <div id="popupMessage" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 10px; border: 2px solid black; border-radius: 5px;">Left player scores</div>
+
     <script src="Ball.js"></script>
     <script src="Paddle.js"></script>
     <script src="pong.js"></script>

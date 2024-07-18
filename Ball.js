@@ -16,11 +16,15 @@ class Ball {
         ctx.fillStyle = this.c;
         ctx.strokeStyle = "black";
         ctx.lineWidth = 2;
+        ctx.shadowBlur = 20;
+        ctx.shadowColor = this.c;
 
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.r, 0, 2*Math.PI);
         ctx.stroke();
         ctx.fill()
+
+        ctx.shadowBlur = 0;
     }
 
     move() {
@@ -72,7 +76,6 @@ class Ball {
             this.vx = paddleForce * Math.abs(this.vx);
             let paddlePos = (this.y - paddle.y - paddle.l/2) / paddle.l * 2
             this.vy += paddlePos * 1.5
-            bounceSound.play();
         }
         return SIDE.NONE;
     }
@@ -93,7 +96,10 @@ class Ball {
             this.vy += paddlePos * 1.5;
             //add sound?
             bounceSound.play();
-            if (this.boing == 4) upgrade.removeUpgrade()
+            if (this.boing == 4) {
+                if (paddleL.hasUpgrade == true) upgrade.removeUpgrade(paddleL)
+                if (paddleR.hasUpgrade == true) upgrade.removeUpgrade(paddleR)
+            }
             if (this.boing < 21) this.boing++
             else resetBall()
 

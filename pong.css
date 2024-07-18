@@ -2,18 +2,23 @@ body {
     text-align: center;
     background-color: #000;
     color: #00ffcc;
+    font-family: 'Orbitron', sans-serif; 
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-h1 {
-    font-family: 'Courier New', Courier, monospace;
+h1, h3 {
     font-size: 60px;
     text-shadow: 0 0 20px #00ffcc;
+    margin: 0.5em;
 }
 
 h3 { 
-    font-family: 'Courier New', Courier, monospace;
     font-size: 20px;
-    text-shadow: 0 0 20px #00ffcc;
 }
 
 label {
@@ -23,18 +28,29 @@ label {
 
 #scoreboard {
     font-size: 40px;
-    font-family: 'Courier New', Courier, monospace;
     text-shadow: 0 0 20px #00ffcc;
+    margin: 1em;
 }
 
 #reset {
     cursor: pointer;
     border-radius: 15px;
-    width: 100px;
+    width: 120px;
     height: 50px;
-    font-family: 'Courier New', Courier, monospace;
-    background-color: #000;
+    background-color: transparent;
     color: #00ffcc;
     border: 2px solid #00ffcc;
     box-shadow: 0 0 10px #00ffcc;
+    transition: all 0.3 ease;
+}
+
+#reset:hover {
+    background-color: #00ffcc;
+    color: #000;
+    box-shadow: 0 0 20px #00ffcc;
+}
+
+#gameboard { 
+    border: 2px solid #00ffcc;
+    box-shadow: 0 0 20px #00ffcc;
 }
