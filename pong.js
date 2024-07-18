@@ -57,7 +57,7 @@ function showPopupMessage(message) {
     popupMessage.style.display = 'block';
     setTimeout(() => {
         popupMessage.style.display = 'none';
-        resetBall();
+        if (scoreL < 10 && scoreR < 10) resetBall();
     }, 500);
 }
 
